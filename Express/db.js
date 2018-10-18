@@ -37,6 +37,16 @@ exports.getEmployee = function(callback) {
     )
 }
 
+exports.getEmployeeByDept = function(callback) {
+    db.query(
+        "SELECT employeeID, employeeName, employeeDept FROM EmployeeDetails ORDER BY employeeDept",
+        function(error, rows) {
+            if(error) throw error;
+            callback(rows);
+        }
+    )
+}
+
 exports.addEmployee = function(data, ready) {
     db.query("INSERT INTO EmployeeDetails SET ?",
     data,
