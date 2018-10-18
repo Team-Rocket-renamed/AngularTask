@@ -1,50 +1,80 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Home</title>
+</head>
+<body>
+  <div style="text-align:center">
   <h1>
     Welcome to {{ title }}!
   </h1>
 </div>
-<div style = "text-align: center">
-  <h1>Employees</h1>
-</div>
-<div class = "list">
+
+
+<div class="container">
+    <ngb-tabset>
+        <ngb-tab title ="Home">
+            <ng-template ngbTabContent>
+                
+            </ng-template>
+         </ngb-tab>
+       <ngb-tab title ="Add Employee" >
+          <ng-template ngbTabContent>
+              <div class = "list">
+                  <h2>Add Employees</h2>
+                  <form (ngSubmit)="addEmployee(addForm)" #addForm="ngForm">
+                  <fieldset>
+                    <legend></legend>
+                    <div><input required [(ngModel)]="newEmployee.employeeName" name="employeeName" placeholder="Name"></div>
+                    <div><input required [(ngModel)]="newEmployee.employeeAddress" name="employeeAddress" placeholder="Address"></div>
+                    <div><input required [(ngModel)]="newEmployee.NINumber" name="NINumber" placeholder="NINumber"></div>
+                    <div><input required [(ngModel)]="newEmployee.employeeBank" name="employeeBank" placeholder="employeeBank"></div>
+                    <div><input required [(ngModel)]="newEmployee.employeeDept" name="employeeDept" placeholder="employeeDept"></div>
+                    <div><input required [(ngModel)]="newEmployee.employeeSalary" name="employeeSalary" placeholder="employeeSalary"
+                      type="number">
+                    </div>
+                    <input type="submit" [disabled]="!addForm.valid">
+                  </fieldset>
+                </form>
+              </div>
+          </ng-template>
+       </ngb-tab>
+
+       <ngb-tab title="Departments">
+          <ng-template ngbTabContent>
+              <div class = "list">
+                <h2>Employees by department</h2>
+                <ul>
+                    <li *ngFor="let employee of localData.employeedept|async">{{employee.employeeName}} : {{employee.employeeDept}}</li>
+                  </ul>
+              </div>
+          </ng-template>
+       </ngb-tab>
+
+       <ngb-tab title="Add Sales Employee">
+          <ng-template ngbTabContent>
+           
+          </ng-template>
+       </ngb-tab>
+       <ngb-tab title="Employee Pay">
+          <ng-template ngbTabContent>
+         
+          </ng-template>
+       </ngb-tab>
+       <ngb-tab title="Employee Sales">
+          <ng-template ngbTabContent>
+             
+          </ng-template>
+       </ngb-tab>
+       <ngb-tab title="Employee Projects">
+          <ng-template ngbTabContent>
+           
+          </ng-template>
+       </ngb-tab>
+    </ngb-tabset>
   
-<ul>
-  <li *ngFor="let employee of localData.employees|async">{{employee.employeeName}}</li>
-</ul>
-</div>
-
-<br>
-<hr>
-
-<div class = "list">
-  <h1>Add Employees (story 1)</h1>
-  <form (ngSubmit)="addEmployee(addForm)" #addForm="ngForm">
-  <fieldset>
-    <legend>
-      add city
-    </legend>
-    <div><input required [(ngModel)]="newEmployee.employeeName" name="employeeName" placeholder="Name"></div>
-    <div><input required [(ngModel)]="newEmployee.employeeAddress" name="employeeAddress" placeholder="Addreass"></div>
-    <div><input required [(ngModel)]="newEmployee.NINumber" name="NINumber" placeholder="NINumber"></div>
-    <div><input required [(ngModel)]="newEmployee.employeeBank" name="employeeBank" placeholder="employeeBank"></div>
-    <div><input required [(ngModel)]="newEmployee.employeeDept" name="employeeDept" placeholder="employeeDept"></div>
-    <div><input required [(ngModel)]="newEmployee.employeeSalary" name="employeeSalary" placeholder="employeeSalary"
-      type="number">
-    </div>
-    <input type="submit" [disabled]="!addForm.valid">
-  </fieldset>
-
-</form>
   </div>
-
-  <br>
-  <hr>
-
-<div class = "list">
-  <h1>Employees by dept (story 2)</h1>
-  <ul>
-    <li *ngFor="let employee of localData.employeedept|async">{{employee.employeeName}} : {{employee.employeeDept}}</li>
-  </ul>
-  </div>
+</body>
+</html>
 
