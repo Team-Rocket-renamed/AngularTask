@@ -1,5 +1,6 @@
 DROP DATABASE Company;
 CREATE DATABASE Company;
+USE Company;
 
 CREATE TABLE EmployeeDetails(
 employeeID INT PRIMARY KEY auto_increment,
