@@ -31,6 +31,14 @@ app.get("/get-Employees-by-dept", function(req, res) {
     });
 });
 
+app.post("/add-Employee", function(req, res) {
+    db.addEmployee(req.body, function(insertedKey) {
+        updateEmployees(function() {
+            res.send(employees);
+        });
+    });
+})
+
 
 app.listen(8010, function() {
     console.log("Express started");
