@@ -17,7 +17,7 @@ exports.initConn = function(username, password) {
 
 const db = mysql.createConnection({
     host: "localhost",
-    user: "eoin",
+    user: "Conor",
     password: "password",
     database: "Company"
 });
@@ -30,16 +30,6 @@ db.connect(function(err) {
 exports.getEmployee = function(callback) {
     db.query(
         "SELECT employeeID, employeeName, employeeAddress FROM EmployeeDetails",
-        function(error, rows) {
-            if(error) throw error;
-            callback(rows);
-        }
-    )
-}
-
-exports.getEmployeeDept = function(callback) {
-    db.query(
-        "SELECT employeeID, employeeName, employeeDept FROM EmployeeDetails ORDER BY employeeDept",
         function(error, rows) {
             if(error) throw error;
             callback(rows);
