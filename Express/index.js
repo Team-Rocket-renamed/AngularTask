@@ -5,6 +5,7 @@ const db = require("./db.js");
 
 function updateEmployees(employeesReady) {
     db.getEmployee(function(rows) {
+        console.log("Updating employees list")
         employees = rows;
         employeesReady();
     });
@@ -12,6 +13,7 @@ function updateEmployees(employeesReady) {
 
 function updateEmployeesDept(employeesReady) {
     db.getEmployeeByDept(function(rows) {
+        console.log("Updating employees list")
         employees = rows;
         employeesReady();
     })
@@ -19,6 +21,7 @@ function updateEmployeesDept(employeesReady) {
 
 function updateEmployeesNetPay(employeesReady) {
     db.getEmployeeNetPay(function(rows) {
+        console.log("Updating employees list")
         employees = rows;
         employeesReady();
     })
