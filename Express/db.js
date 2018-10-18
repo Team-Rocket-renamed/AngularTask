@@ -47,6 +47,18 @@ exports.getEmployeeByDept = function(callback) {
     )
 }
 
+exports.getEmployeeNetPay = function(callback) {
+    db.query(
+        "SELECT employeeID, employeeName, employeeSalary * 0.75 + (SELECT IF EXISTS (CommissionRate * Totalsales))"
+        + " FROM EmployeeDetails join SalesEmployee"
+        + " WHERE EmployeeDetails.employeeID = SalesEmployee.employeeID;",
+        function(error, rows) {
+            if(error) throw error;
+            callback(rows);
+        }
+    )
+}
+
 exports.addEmployee = function(data, ready) {
     db.query("INSERT INTO EmployeeDetails SET ?",
     data,
