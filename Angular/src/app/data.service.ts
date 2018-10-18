@@ -35,11 +35,12 @@ export class DataService {
     this.tempEmp = new Employee();
     console.log("NSE is");
     console.log(NSE);
+    
     //take sales employee and make a temp employee from the sales employee attributes
-    this.tempEmp.employeeaddress = NSE.address;
-    this.tempEmp.employeeBank  = NSE.bankNumber;
-    this.tempEmp.employeeName  = NSE.name;
-    this.tempEmp.employeenin = NSE.nin;
+    this.tempEmp.employeeaddress = NSE.address.toString();
+    this.tempEmp.employeeBank  = NSE.bankNumber.toString();
+    this.tempEmp.employeeName  = NSE.name.toString();
+    this.tempEmp.employeenin = NSE.nin.toString();
     this.tempEmp.employeeSalary  = NSE.salary;
     
     this.employees = this.http.post<Employee[]>('/api/add-Employee', this.tempEmp);

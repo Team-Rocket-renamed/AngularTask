@@ -7,7 +7,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SalesAddFormComponent } from './sales-add-form/sales-add-form.component';
 import { AddEmployeeFormComponent } from './add-employee-form/add-employee-form.component';
 import { ListAllEmployeesComponent } from './list-all-employees/list-all-employees.component';
-import { ListDeptEmployeesComponent } from './list-dept-employees/list-dept-employees.component'; 
+import { ListDeptEmployeesComponent } from './list-dept-employees/list-dept-employees.component';
+
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ListDeptEmployeesComponent } from './list-dept-employees/list-dept-empl
     SalesAddFormComponent,
     AddEmployeeFormComponent,
     ListAllEmployeesComponent,
-    ListDeptEmployeesComponent
+    ListDeptEmployeesComponent,
+   
   ],
   imports: [
     HttpClientModule,

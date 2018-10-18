@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { SalesEmployee } from '../sales-employee';
+import { Employee } from '../employee';
+import { EmpClone } from '../emp-clone';
 
 @Component({
   selector: 'ang-sales-add-form',
@@ -10,6 +12,7 @@ import { SalesEmployee } from '../sales-employee';
 export class SalesAddFormComponent implements OnInit {
 
   public newSalesEmployee : SalesEmployee;
+  public tempEmp : EmpClone;
   localData : DataService
 
   constructor(data : DataService){
@@ -19,13 +22,21 @@ export class SalesAddFormComponent implements OnInit {
 
   ngOnInit(){
     this.newSalesEmployee = new SalesEmployee();
+   
   }
   
   addSalesEmployee():void{
+    this.tempEmp = new EmpClone(this.newSalesEmployee);
     var SalesEmployeeToAdd = this.newSalesEmployee;
+    
+    
+    console.log(this.tempEmp);
+    
+    
+    this.localData.addEmployee(this.tempEmp);
+    
     this.newSalesEmployee = new SalesEmployee();
-    console.log(SalesEmployeeToAdd);
-    this.localData.addSalesEmployee(SalesEmployeeToAdd);
+    //this.localData.addSalesEmployee(SalesEmployeeToAdd);
   }
 
 }
