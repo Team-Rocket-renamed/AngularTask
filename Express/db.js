@@ -34,7 +34,8 @@ exports.getEmployee = function(callback) {
             if(error) throw error;
             callback(rows);
         }
-    )
+    );
+    console.log("Getting all employees")
 }
 
 exports.getEmployeeByDept = function(callback) {
@@ -44,7 +45,21 @@ exports.getEmployeeByDept = function(callback) {
             if(error) throw error;
             callback(rows);
         }
-    )
+    );
+    console.log("Getting employees by department")
+}
+
+exports.getEmployeeNetPay = function(callback) {
+    db.query(
+        "SELECT employeeID, employeeName, employeeSalary * 0.75 + (SELECT IF EXISTS (CommissionRate * Totalsales))"
+        + " FROM EmployeeDetails join SalesEmployee"
+        + " WHERE EmployeeDetails.employeeID = SalesEmployee.employeeID;",
+        function(error, rows) {
+            if(error) throw error;
+            callback(rows);
+        }
+    );
+    console.log("Getting employees pay report")
 }
 
 exports.addEmployee = function(data, ready) {
@@ -54,6 +69,7 @@ exports.addEmployee = function(data, ready) {
         if(error) throw error;
         ready(results.insertId);
     });
+    console.log("Adding employee");
 }
 
 exports.addSalesEmployee = function(data, ready) {
@@ -63,6 +79,7 @@ exports.addSalesEmployee = function(data, ready) {
         if(error) throw error;
         ready(results.insertId);
     });
+    console.log("Adding sales employee");
 }
 /*
 exports.removeCity = function(id, callback) {

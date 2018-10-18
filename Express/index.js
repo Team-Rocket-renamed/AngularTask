@@ -5,6 +5,7 @@ const db = require("./db.js");
 
 function updateEmployees(employeesReady) {
     db.getEmployee(function(rows) {
+        console.log("Updating employees list")
         employees = rows;
         employeesReady();
     });
@@ -12,6 +13,15 @@ function updateEmployees(employeesReady) {
 
 function updateEmployeesDept(employeesReady) {
     db.getEmployeeByDept(function(rows) {
+        console.log("Updating employees list")
+        employees = rows;
+        employeesReady();
+    })
+}
+
+function updateEmployeesNetPay(employeesReady) {
+    db.getEmployeeNetPay(function(rows) {
+        console.log("Updating employees list")
         employees = rows;
         employeesReady();
     })
@@ -47,6 +57,12 @@ app.post("/add-Sales-Employee", function(req, res) {
         updateEmployees(function() {
             res.send(employees);
         });
+    });
+});
+
+app.post("/get-Employee-Net-Pay", function(req, res) {
+    updateEmployeesNetPay(function() {
+        res.send(employees);
     });
 });
 
