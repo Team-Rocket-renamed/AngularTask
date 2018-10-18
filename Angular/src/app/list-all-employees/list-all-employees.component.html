@@ -1,0 +1,35 @@
+<div class = "list">
+    <br>
+    <h1>List of all employees</h1>
+  
+    <hr>
+    <table class="table-striped" style="width:100%">
+    <tr>
+      <th>ID  </th>
+      <th>Name </th>
+      <th>Address </th>
+      <th>NI Number </th>
+      <th>Bank </th>
+      <th>Salary </th>
+      <th>Department</th>
+      
+    </tr>
+    
+  
+    <tr *ngFor="let employee of localData.employees|async">
+      <td>{{employee.employeeID}}</td>
+      <td>{{employee.employeeName}}</td>
+      
+      <td>{{employee.employeeAddress}}</td>
+      <td>{{employee.NINumber}}</td>
+      <td>{{employee.employeeBank}}</td>
+      <td>{{employee.employeeSalary}}</td>
+      <td>{{employee.employeeDept}}</td>
+    
+    
+    
+    </tr>
+  
+  
+    </table>
+  </div>

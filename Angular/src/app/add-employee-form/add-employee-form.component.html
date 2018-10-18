@@ -1,0 +1,32 @@
+
+
+<div class = "list">
+    <br>
+    <h1>Add Employee (story 1)</h1>
+    <form (ngSubmit)="addEmployee(addForm)" #addForm="ngForm">
+    <fieldset>
+      <legend>
+        add employee
+      </legend>
+      <div><input required [(ngModel)]="newEmployee.employeeName" name="employeeName" placeholder="Name"></div>
+      <div><input required [(ngModel)]="newEmployee.employeeAddress" name="employeeAddress" placeholder="Address"></div>
+      <div><input required [(ngModel)]="newEmployee.NINumber" name="NINumber" placeholder="NINumber"></div>
+      <div><input required [(ngModel)]="newEmployee.employeeBank" name="employeeBank" placeholder="employee Bank"></div>
+      <div><input required [(ngModel)]="newEmployee.employeeDept" name="employeeDept" placeholder="employee Dept"></div>
+      <div><input required [(ngModel)]="newEmployee.employeeSalary" name="employeeSalary" placeholder="employee Salary"
+        type="number">
+      </div>
+      <input type="submit" [disabled]="!addForm.valid">
+    </fieldset>
+    
+    </form>
+    </div>
+    
+    
+    
+    
+    <br>
+    <hr>
+    
+    
+     

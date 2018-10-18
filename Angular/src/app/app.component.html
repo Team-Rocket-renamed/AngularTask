@@ -11,122 +11,69 @@
 <div class ="container">
 
   
-  <ngb-tabset>
-    <ngb-tab title="List">
+<ngb-tabset>
+
+
+    <ngb-tab title="Employees List">
         <ng-template ngbTabContent>
-<div class = "list">
-  <br>
-  <h1>List of all employees</h1>
+      <ngb-tabset>
 
-  <hr>
-  <table class="table-striped" style="width:100%">
-  <tr>
-    <th>ID  </th>
-    <th>Name </th>
-    <th>Address </th>
-    <th>NI Number </th>
-    <th>Bank </th>
-    <th>Salary </th>
-    <th>Department</th>
-    
-  </tr>
-  
-
-  <tr *ngFor="let employee of localData.employees|async">
-    <td>{{employee.employeeID}}</td>
-    <td>{{employee.employeeName}}</td>
-    
-    <td>{{employee.employeeAddress}}</td>
-    <td>{{employee.NINumber}}</td>
-    <td>{{employee.employeeBank}}</td>
-    <td>{{employee.employeeSalary}}</td>
-    <td>{{employee.employeeDept}}</td>
-  
-  
-  
-  </tr>
-
-
-  </table>
-</div>
+  <ngb-tab title="All employees list">
+      <ng-template ngbTabContent>
+        <ang-list-all-employees></ang-list-all-employees>
 
 </ng-template>
 </ngb-tab>
+
+<ngb-tab title="Employees by department">
+    <ng-template ngbTabContent>
+    <ang-list-dept-employees></ang-list-dept-employees>
+      </ng-template>
+</ngb-tab>
+
+</ngb-tabset>
+</ng-template>
+</ngb-tab>
+
+
+
+  
 
 <br>
 <hr>
 
+  <ngb-tab title="Add employees">
+      <ng-template ngbTabContent>
+    <ngb-tabset>
+
 <ngb-tab title="Add Employee">
     <ng-template ngbTabContent>
+  <ang-add-employee-form></ang-add-employee-form>
+</ng-template>
+</ngb-tab>
+<br>
+<hr>
 
-<div class = "list">
-  <br>
-  <h1>Add Employees (story 1)</h1>
-  <form (ngSubmit)="addEmployee(addForm)" #addForm="ngForm">
-  <fieldset>
-    <legend>
-      add employee
-    </legend>
-    <div><input required [(ngModel)]="newEmployee.employeeName" name="employeeName" placeholder="Name"></div>
-    <div><input required [(ngModel)]="newEmployee.employeeAddress" name="employeeAddress" placeholder="Addreass"></div>
-    <div><input required [(ngModel)]="newEmployee.NINumber" name="NINumber" placeholder="NINumber"></div>
-    <div><input required [(ngModel)]="newEmployee.employeeBank" name="employeeBank" placeholder="employeeBank"></div>
-    <div><input required [(ngModel)]="newEmployee.employeeDept" name="employeeDept" placeholder="employeeDept"></div>
-    <div><input required [(ngModel)]="newEmployee.employeeSalary" name="employeeSalary" placeholder="employeeSalary"
-      type="number">
-    </div>
-    <input type="submit" [disabled]="!addForm.valid">
-  </fieldset>
+<ngb-tab title="Add Sales Employee">
+  <ng-template ngbTabContent>
 
-</form>
-  </div>
+    <ang-sales-add-form></ang-sales-add-form>
 
 </ng-template>
 </ngb-tab>
+
+</ngb-tabset>
+</ng-template>
+</ngb-tab>
+
+
+
 
   <br>
   <hr>
-  <ngb-tab title="Employees by dept">
-      <ng-template ngbTabContent>
 
-          <div class = "list">
-              <br>
-              <h1>List of all employees by department</h1>
-            
-              <hr>
-              <table class="table-striped" style="width:100%">
-              <tr>
-                <th>ID  </th>
-                <th>Name </th>
-                <th>Address </th>
-                <th>NI Number </th>
-                <th>Bank </th>
-                <th>Salary </th>
-                <th>Department</th>
-                
-              </tr>
-              
-            
-              <tr *ngFor="let employee of localData.employeedept|async">
-                <td>{{employee.employeeID}}</td>
-                <td>{{employee.employeeName}}</td>
-                
-                <td>{{employee.employeeAddress}}</td>
-                <td>{{employee.NINumber}}</td>
-                <td>{{employee.employeeBank}}</td>
-                <td>{{employee.employeeSalary}}</td>
-                <td>{{employee.employeeDept}}</td>
-              
-              
-              
-              </tr>
-            
-            
-              </table>
-            </div>
 
-</ng-template>
-</ngb-tab>
+
 
 
 
@@ -134,3 +81,4 @@
 
 </ngb-tabset>  
 
+</div>

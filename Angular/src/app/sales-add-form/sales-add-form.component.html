@@ -1,0 +1,36 @@
+
+
+<div class = "list">
+<br>
+<h1>Add Sales Employee (story 3)</h1>
+<form (ngSubmit)="addSalesEmployee(addSalesForm)" #addSalesForm="ngForm">
+<fieldset>
+  <legend>
+    add Sales employee
+  </legend>
+  <div><input required [(ngModel)]="newSalesEmployee.employeeName" name="SalesemployeeName" placeholder="Name"></div>
+  <div><input required [(ngModel)]="newSalesEmployee.employeeAddress" name="SalesemployeeAddress" placeholder="Address"></div>
+  <div><input required [(ngModel)]="newSalesEmployee.NINumber" name="SalesNINumber" placeholder="NINumber"></div>
+  <div><input required [(ngModel)]="newSalesEmployee.employeeBank" name="SalesemployeeBank" placeholder="employee Bank"></div>
+  <div><input required [(ngModel)]="newSalesEmployee.employeeDept" name="SalesemployeeDept" placeholder="employee Dept"></div>
+  <div><input required [(ngModel)]="newSalesEmployee.employeeSalary" name="SalesemployeeSalary" placeholder="employee Salary"
+    type="number">
+  </div>
+  <div><input required [(ngModel)]="newSalesEmployee.commissionRate" name="commissionRate" placeholder="commiss ionRate"
+    type="number"> </div>
+    <div><input required [(ngModel)]="newSalesEmployee.totalSales" name="totalSales" placeholder="total Sales"
+      type="number"> </div>
+  <input type="submit" [disabled]="!addSalesForm.valid">
+</fieldset>
+
+</form>
+</div>
+
+
+
+
+<br>
+<hr>
+
+
+ 

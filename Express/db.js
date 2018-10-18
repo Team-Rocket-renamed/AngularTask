@@ -5,7 +5,7 @@ exports.initConn = function(username, password) {
     try {
         const db = mysql.createConnection({
             host: "localhost",
-            user: username,
+            user: james,
             password: password,
             database: "Company"
         });
@@ -17,7 +17,7 @@ exports.initConn = function(username, password) {
 
 const db = mysql.createConnection({
     host: "localhost",
-    user: "james",
+    user: "root",
     password: "password",
     database: "Company"
 });
@@ -48,6 +48,7 @@ exports.getEmployeeByDept = function(callback) {
 }
 
 exports.addEmployee = function(data, ready) {
+    console.log("Adding emp");
     db.query("INSERT INTO EmployeeDetails SET ?",
     data,
     function(error, results) {
