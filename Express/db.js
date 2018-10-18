@@ -55,6 +55,15 @@ exports.addEmployee = function(data, ready) {
         ready(results.insertId);
     });
 }
+
+exports.addSalesEmployee = function(data, ready) {
+    db.query("INSERT INTO SalesEmployee SET ?",
+    data,
+    function(error, results) {
+        if(error) throw error;
+        ready(results.insertId);
+    });
+}
 /*
 exports.removeCity = function(id, callback) {
     db.query(
