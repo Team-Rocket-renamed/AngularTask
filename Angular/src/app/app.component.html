@@ -7,22 +7,39 @@
 <div style = "text-align: center">
   <h1>Employees</h1>
 </div>
+
+<div class ="container">
+
+  
+  <ngb-tabset>
+    <ngb-tab title="List">
+        <ng-template ngbTabContent>
 <div class = "list">
+  <br>
+  <h1>List of all employees</h1>
+
   
 <ul>
   <li *ngFor="let employee of localData.employees|async">{{employee.employeeName}}</li>
 </ul>
 </div>
 
+</ng-template>
+</ngb-tab>
+
 <br>
 <hr>
 
+<ngb-tab title="Add Employee">
+    <ng-template ngbTabContent>
+
 <div class = "list">
+  <br>
   <h1>Add Employees (story 1)</h1>
   <form (ngSubmit)="addEmployee(addForm)" #addForm="ngForm">
   <fieldset>
     <legend>
-      add city
+      add employee
     </legend>
     <div><input required [(ngModel)]="newEmployee.employeeName" name="employeeName" placeholder="Name"></div>
     <div><input required [(ngModel)]="newEmployee.employeeAddress" name="employeeAddress" placeholder="Addreass"></div>
@@ -38,13 +55,28 @@
 </form>
   </div>
 
+</ng-template>
+</ngb-tab>
+
   <br>
   <hr>
+  <ngb-tab title="Employees by dept">
+      <ng-template ngbTabContent>
 
 <div class = "list">
+  <br>
   <h1>Employees by dept (story 2)</h1>
   <ul>
     <li *ngFor="let employee of localData.employeedept|async">{{employee.employeeName}} : {{employee.employeeDept}}</li>
   </ul>
   </div>
+
+</ng-template>
+</ngb-tab>
+
+
+
+
+
+</ngb-tabset>  
 
