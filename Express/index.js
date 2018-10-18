@@ -23,7 +23,7 @@ app.get("/get-Employees", function(req, res) {
     updateEmployees(function() {
         res.send(employees);
     });  
-  });
+});
 
 app.get("/get-Employees-by-dept", function(req, res) {
     updateEmployeesDept(function() {
@@ -36,6 +36,9 @@ app.post("/add-Employee", function(req, res) {
         updateEmployees(function() {
             res.send(employees);
         });
+        /*updateEmployeesDept(function() {
+            res.send(employees);
+        });*/
     });
 });
 
