@@ -1,5 +1,7 @@
-DROP DATABASE Company;
+DROP DATABASE IF EXISTS Company;
 CREATE DATABASE Company;
+USE Company;
+
 USE Company;
 
 CREATE TABLE EmployeeDetails(
