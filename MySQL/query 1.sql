@@ -1,3 +1,2 @@
-
-SELECT * FROM EmployeeDetails
-ORDER BY employeeDept;
+SELECT employeeID, employeeName, employeeDept 
+FROM EmployeeDetails
