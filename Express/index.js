@@ -10,13 +10,42 @@ function updateEmployees(employeesReady) {
     });
 };
 
+function updateEmployeesDept(employeesReady) {
+    db.getEmployeeByDept(function(rows) {
+        employees = rows;
+        employeesReady();
+    })
+}
+
 employees = [];
 
 app.get("/get-Employees", function(req, res) {
     updateEmployees(function() {
-      res.send(employees);
+        res.send(employees);
     });  
   });
+
+app.get("/get-Employees-by-dept", function(req, res) {
+    updateEmployeesDept(function() {
+        res.send(employees);
+    });
+});
+
+app.post("/add-Employee", function(req, res) {
+    db.addEmployee(req.body, function(insertedKey) {
+        updateEmployees(function() {
+            res.send(employees);
+        });
+    });
+});
+
+app.post("/add-Sales-Employee", function(req, res) {
+    db.addSalesEmployee(req.body, function(insertedKey) {
+        updateEmployees(function() {
+            res.send(employees);
+        });
+    });
+});
 
 app.listen(8010, function() {
     console.log("Express started");
