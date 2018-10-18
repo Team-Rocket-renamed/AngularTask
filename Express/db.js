@@ -17,7 +17,7 @@ exports.initConn = function(username, password) {
 
 const db = mysql.createConnection({
     host: "localhost",
-    user: "james",
+    user: "shane",
     password: "password",
     database: "Company"
 });
@@ -54,6 +54,20 @@ exports.addEmployee = function(data, ready) {
         if(error) throw error;
         ready(results.insertId);
     });
+}
+
+exports.getEmployeeNetPay = function(callback) {
+    db.query(
+        "(select employeeID, employeeName, employeeSalary " +
+        "+ ifnull((select(commissionRate * totalSales) from SalesEmployee "
+        +  "where SalesEmployee.employeeID = EmployeeDetails.employeeID),0) as total "
+        + "from EmployeeDetails)",
+        data,
+        function(error, results) {
+            if(error) throw error;
+            callback(rows)
+        }
+    )
 }
 /*
 exports.removeCity = function(id, callback) {

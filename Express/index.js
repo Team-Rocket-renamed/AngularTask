@@ -46,9 +46,6 @@ app.post("/add-Employee", function(req, res) {
         updateEmployees(function() {
             res.send(employees);
         });
-        /*updateEmployeesDept(function() {
-            res.send(employees);
-        });*/
     });
 });
 
