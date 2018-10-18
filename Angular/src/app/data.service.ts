@@ -10,4 +10,11 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   employees = this.http.get<Employee[]>('/api/get-Employees');
+
+  employeedept = this.http.get<Employee[]>('/api/get-Employees-by-dept');
+
+  public addEmployee(newCity : Employee){
+    this.employees = this.http.post<Employee[]>('/api/add-Employee', newCity);
+    //console.log("adding city");
+  }
 }
