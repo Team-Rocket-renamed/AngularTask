@@ -14,3 +14,37 @@
 </ul>
 </div>
 
+<br>
+<hr>
+
+<div class = "list">
+  <h1>Add Employees (story 1)</h1>
+  <form (ngSubmit)="addEmployee(addForm)" #addForm="ngForm">
+  <fieldset>
+    <legend>
+      add city
+    </legend>
+    <div><input required [(ngModel)]="newEmployee.employeeName" name="employeeName" placeholder="Name"></div>
+    <div><input required [(ngModel)]="newEmployee.employeeAddress" name="employeeAddress" placeholder="Addreass"></div>
+    <div><input required [(ngModel)]="newEmployee.NINumber" name="NINumber" placeholder="NINumber"></div>
+    <div><input required [(ngModel)]="newEmployee.employeeBank" name="employeeBank" placeholder="employeeBank"></div>
+    <div><input required [(ngModel)]="newEmployee.employeeDept" name="employeeDept" placeholder="employeeDept"></div>
+    <div><input required [(ngModel)]="newEmployee.employeeSalary" name="employeeSalary" placeholder="employeeSalary"
+      type="number">
+    </div>
+    <input type="submit" [disabled]="!addForm.valid">
+  </fieldset>
+
+</form>
+  </div>
+
+  <br>
+  <hr>
+
+<div class = "list">
+  <h1>Employees by dept (story 2)</h1>
+  <ul>
+    <li *ngFor="let employee of localData.employeedept|async">{{employee.employeeName}} : {{employee.employeeDept}}</li>
+  </ul>
+  </div>
+
