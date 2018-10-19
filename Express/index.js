@@ -65,13 +65,13 @@ app.post("/add-Sales-Employee", function(req, res) {
     });
 });
 
-app.post("/get-Employee-Net-Pay", function(req, res) {
+app.get("/get-Employee-Net-Pay", function(req, res) {
     updateEmployeesNetPay(function() {
         res.send(employees);
     });
 });
 
-app.post("/get-Best-Sales-Employee", function(req, res) {
+app.get("/get-Best-Sales-Employee", function(req, res) {
     updateBestSalesEmployee(function() {
         res.send(employees);
     });
