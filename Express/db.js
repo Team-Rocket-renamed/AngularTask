@@ -69,6 +69,19 @@ exports.getEmployeeNetPay = function(callback) {
         }
     )
 }
+
+exports.getBestSalesEmployee = function(callback) {
+    db.query(
+        "SELECT EmployeeDetails.employeeID AS 'ID', employeeName AS 'Name', totalSales AS 'Total Sales' FROM EmployeeDetails join SalesEmployee "
+        + "WHERE EmployeeDetails.employeeID = SalesEmployee.employeeID "
+        + "ORDER BY totalSales DESC;",
+        data,
+        function(error, results) {
+            if(error) throw error;
+            callback(rows)
+        }
+    )
+}
 /*
 exports.removeCity = function(id, callback) {
     db.query(

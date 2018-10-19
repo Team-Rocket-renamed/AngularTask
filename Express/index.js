@@ -27,6 +27,14 @@ function updateEmployeesNetPay(employeesReady) {
     })
 }
 
+function updateBestSalesEmployee(employeesReady) {
+    db.getBestSalesEmployee(function(rows) {
+        console.log("Updating employees list")
+        employees = rows;
+        employeesReady();
+    })
+}
+
 employees = [];
 
 app.get("/get-Employees", function(req, res) {
@@ -59,6 +67,12 @@ app.post("/add-Sales-Employee", function(req, res) {
 
 app.post("/get-Employee-Net-Pay", function(req, res) {
     updateEmployeesNetPay(function() {
+        res.send(employees);
+    });
+});
+
+app.post("/get-Best-Sales-Employee", function(req, res) {
+    updateBestSalesEmployee(function() {
         res.send(employees);
     });
 });
